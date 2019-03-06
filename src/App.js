@@ -12,10 +12,11 @@ class App extends Component {
       gender: 'female',
       age: '',
       renderLoginForm: false,
-      authenticated:false,
+      authenticated: false,
       email: '',
       password: '',
-      message: ''
+      message: '',
+      entrySaved: false
     }
   }
 
@@ -35,6 +36,10 @@ class App extends Component {
     })
   }
 
+  entryHandler() {
+    this.setState({ entrySaved: true });
+  }
+
   render() {
     let renderLogin;
     let user;
@@ -46,34 +51,37 @@ class App extends Component {
       )
     } else {
 
-    if (this.state.renderLoginForm === true) {
-      renderLogin = (
-        <>
-          <LoginForm 
-            loginHandler={this.onLogin.bind(this)}
-            inputChangeHandler={this.onChange.bind(this)}
-          />
-        </>
-      )
-    } else {
-      renderLogin = (
-        <>
-          <button id="login" onClick={() => this.setState({ renderLoginForm:true })}>Login</button>
-          <p>{this.state.message}</p>
-        </>
-      )
-    } 
-  }
+      if (this.state.renderLoginForm === true) {
+        renderLogin = (
+          <>
+            <LoginForm
+              loginHandler={this.onLogin.bind(this)}
+              inputChangeHandler={this.onChange.bind(this)}
+            />
+          </>
+        )
+      } else {
+        renderLogin = (
+          <>
+            <button id="login" onClick={() => this.setState({ renderLoginForm: true })}>Login</button>
+            <p>{this.state.message}</p>
+          </>
+        )
+      }
+    }
     return (
       <div>
-        <InputFields 
-        inputChangeHandler={this.onChange.bind(this)}
+        <InputFields
+          inputChangeHandler={this.onChange.bind(this)}
         />
-        
+
         <DisplayCooperResult
           distance={this.state.distance}
           gender={this.state.gender}
           age={this.state.age}
+          authenticated={this.state.authenticated}
+          entrySaved={this.state.entrySaved}
+          entryHandler={this.entryHandler.bind(this)}
         />
         {renderLogin}
       </div>
