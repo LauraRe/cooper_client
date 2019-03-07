@@ -5,27 +5,33 @@ class DisplayBmi extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      weight_one: '',
-      height_one: '',
+      weight: '100',
+      height: '186',
       method: 'metric',
       weightLabel: 'Weight(kg)',
-      heightLabel: 'Height(cm)'
+      heightLabel: 'Height(cm)',
+      bmiMessage: ''
     }
-    this.calculate = this.calculate.bind(this)
   }
-  calculate() {
-    let weight = this.props.weight;
-    let height = this.props.height;
-    let method = this.props.method;
 
-    return bmiCalculation(weight, height, method);
+  async runCalculator(event) {
+    await this.setState({
+      [event.target.id]: event.target.value,
+    });
+    this.Calculator()
+  }
+
+  Calculator() { 
+    this.setState({
+      bmiMessage: bmiCalculation(this.state.weight, this.state.height, this.state.method)
+    })
   }
 
   render() {
     return (
       <>
         <div id='response'>
-          {this.calculate}
+          {this.state.bmiMessage}
         </div>
         <div>
           <h1>BMI Converter</h1>
@@ -55,15 +61,14 @@ class DisplayBmi extends Component {
 
           <div>
             <label>{this.state.weightLabel}</label>
-            <input name="weight" value={this.state.weight} onChange={(e) => { this.setState({ weight: e.target.value }) }} />
+            <input id="weight" name="weight" value={this.state.weight} onChange={(e) => {this.runCalculator(e) }} />
           </div>
 
           <div>
             <label>{this.state.heightLabel}</label>
-            <input name="height" value={this.state.height} onChange={(e) => this.setState({ height: e.target.value })} />
+            <input id="height" name="height" value={this.state.height} onChange={(e) =>{this.runCalculator(e) }} />
           </div>
         </div>
-
       </>
     )
   }
