@@ -10,7 +10,8 @@ module.exports = {
           '--ignore-certificate-errors',
           "--disable-popup-blocking",
           "--disable-infobars",
-          '--disable-web-security'
+          '--disable-web-security',
+          '--shm-size=1gb'
         ]
     },
     browserContext: 'default',

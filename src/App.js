@@ -4,6 +4,8 @@ import InputFields from './Components/InputFields';
 import LoginForm from './Components/LoginForm';
 import { authenticate } from './Modules/Auth';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
+import DisplayResult from './Components/displayResult';
+import MethodSelect from './Components/MethodSelect'
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +20,12 @@ class App extends Component {
       password: '',
       message: '',
       entrySaved: false,
-      renderIndex: false
+      renderIndex: false,
+      weight: '',
+      height: '',
+      method: 'metric',
+      weightLabel: 'Weight(kg)',
+      heightLabel: 'Height(cm)'
     }
   }
 
@@ -111,6 +118,17 @@ class App extends Component {
         />
         {renderLogin}
         {performanceDataIndex}
+        <div className="Bmi-div">
+          <DisplayResult
+            weight={this.state.weight}
+            height={this.state.height}
+            method={this.state.method}
+          />
+          <MethodSelect 
+            weightLabel={this.state.weightLabel}
+            heightLabel={this.state.heightLabel}
+          />
+        </div>
       </div>
     );
   }
