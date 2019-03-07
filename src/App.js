@@ -112,14 +112,8 @@ class App extends Component {
         />
           {renderLogin}
           {performanceDataIndex}
-          
-        <div className="Bmi-div">
-          <DisplayBmi
-            weight={this.state.weight}
-            height={this.state.height}
-            method={this.state.method}
-          />
-        </div>
+  
+          <DisplayBmi />
       </div>
     );
   }
