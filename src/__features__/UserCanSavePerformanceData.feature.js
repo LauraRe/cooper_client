@@ -3,7 +3,7 @@ require('../__mocks__/mocksConfig')
 describe('User attempts save data', () => {
 
   beforeAll(async () => {
-    jest.setTimeout(10000)
+    jest.setTimeout(15000)
     await page.goto('http://localhost:3001');
 
   });
