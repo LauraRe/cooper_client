@@ -3,7 +3,7 @@ require('../__mocks__/mocksConfig')
 describe('User attempts to login', () => {
 
     beforeAll(async () => {
-      jest.setTimeout(15000)
+      jest.setTimeout(20000)
       await page.goto('http://localhost:3001');
     });
   

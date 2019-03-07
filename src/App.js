@@ -4,8 +4,7 @@ import InputFields from './Components/InputFields';
 import LoginForm from './Components/LoginForm';
 import { authenticate } from './Modules/Auth';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
-import DisplayResult from './Components/displayResult';
-import MethodSelect from './Components/MethodSelect'
+import DisplayBmi from './Components/DisplayBmi';
 
 class App extends Component {
   constructor(props) {
@@ -21,11 +20,6 @@ class App extends Component {
       message: '',
       entrySaved: false,
       renderIndex: false,
-      weight: '',
-      height: '',
-      method: 'metric',
-      weightLabel: 'Weight(kg)',
-      heightLabel: 'Height(cm)'
     }
   }
 
@@ -116,17 +110,14 @@ class App extends Component {
           entrySaved={this.state.entrySaved}
           entryHandler={this.entryHandler.bind(this)}
         />
-        {renderLogin}
-        {performanceDataIndex}
+          {renderLogin}
+          {performanceDataIndex}
+          
         <div className="Bmi-div">
-          <DisplayResult
+          <DisplayBmi
             weight={this.state.weight}
             height={this.state.height}
             method={this.state.method}
-          />
-          <MethodSelect 
-            weightLabel={this.state.weightLabel}
-            heightLabel={this.state.heightLabel}
           />
         </div>
       </div>
