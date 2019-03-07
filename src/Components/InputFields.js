@@ -3,6 +3,7 @@ import React from 'react';
 const InputFields = (props) => {
   return (
     <>
+      <h1>Cooper test</h1>
       <label>Distance</label>
       <input id="distance" onChange={props.inputChangeHandler}></input>
 

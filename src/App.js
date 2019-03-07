@@ -97,24 +97,27 @@ class App extends Component {
       }
     }
     return (
-      <div>
-        <InputFields
-          inputChangeHandler={this.onChange.bind(this)}
-        />
+      <>
+        <div>
+          <InputFields
+            inputChangeHandler={this.onChange.bind(this)}
+          />
 
-        <DisplayCooperResult
-          distance={this.state.distance}
-          gender={this.state.gender}
-          age={this.state.age}
-          authenticated={this.state.authenticated}
-          entrySaved={this.state.entrySaved}
-          entryHandler={this.entryHandler.bind(this)}
-        />
-          {renderLogin}
-          {performanceDataIndex}
-  
+          <DisplayCooperResult
+            distance={this.state.distance}
+            gender={this.state.gender}
+            age={this.state.age}
+            authenticated={this.state.authenticated}
+            entrySaved={this.state.entrySaved}
+            entryHandler={this.entryHandler.bind(this)}
+          />
+            {renderLogin}
+            {performanceDataIndex}
+        </div>
+        <div>
           <DisplayBmi />
-      </div>
+        </div>
+      </>
     );
   }
 }
