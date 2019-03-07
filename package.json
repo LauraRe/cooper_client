@@ -5,8 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5"
+    "react-dom": "^16.8.3"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
@@ -30,6 +29,8 @@
     "jest-dev-server": "^3.9.0",
     "jest-puppeteer": "^3.9.0",
     "puppeteer": "^1.13.0",
-    "react-test-renderer": "^16.8.3"
+    "react-scripts": "^2.1.8",
+    "react-test-renderer": "^16.8.4",
+    "sinon": "^7.2.7"
   }
 }

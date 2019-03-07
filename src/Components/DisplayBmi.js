@@ -15,6 +15,7 @@ class DisplayBmi extends Component {
   }
 
   async runCalculator(event) {
+    console.log(event)
     await this.setState({
       [event.target.id]: event.target.value,
     });
@@ -26,43 +27,42 @@ class DisplayBmi extends Component {
   render() {
     return (
       <>
-        <div>
-          <h1>BMI Converter</h1>
-          <select id="method" value={this.state.method} onChange={(e) => {
-            const method = e.target.value
-            let heightLabel
-            let weightLabel
+        <h1>BMI Converter</h1>
+        <select id="method" value={this.state.method} onChange={(e) => {
+          const method = e.target.value
+          let heightLabel
+          let weightLabel
 
-            if (method === "metric") {
-              weightLabel = "Weight(kg)"
-              heightLabel = "Height(cm)"
-            } else if (method === "imperial") {
-              weightLabel = "Weight(lbs)"
-              heightLabel = "Height(inches)"
-            }
-
-            this.setState({
-              method: e.target.value,
-              weightLabel: weightLabel,
-              heightLabel: heightLabel
-            })
+          if (method === "metric") {
+            weightLabel = "Weight(kg)"
+            heightLabel = "Height(cm)"
+          } else if (method === "imperial") {
+            weightLabel = "Weight(lbs)"
+            heightLabel = "Height(inches)"
           }
-          }>
-            <option value="metric" > Metric </option>
-            <option value="imperial" > Imperial </option>
-          </select>
 
-          <div>
-            <label>{this.state.weightLabel}</label>
-            <input id="weight" name="weight" value={this.state.weight} onChange={(e) => {this.runCalculator(e) }} />
-          </div>
+          this.setState({
+            method: e.target.value,
+            weightLabel: weightLabel,
+            heightLabel: heightLabel
+          })
+        }
+        }>
+          <option value="metric" > Metric </option>
+          <option value="imperial" > Imperial </option>
+        </select>
 
-          <div>
-            <label>{this.state.heightLabel}</label>
-            <input id="height" name="height" value={this.state.height} onChange={(e) =>{this.runCalculator(e) }} />
-          </div>
+        <div>
+          <label>{this.state.weightLabel}</label>
+          <input id="weight" name="weight" value={this.state.weight} onChange={(e) => { this.runCalculator(e) }} />
         </div>
-        <div id='response' style={{paddingTop:'20px'}}>
+
+        <div>
+          <label>{this.state.heightLabel}</label>
+          <input id="height" name="height" value={this.state.height} onChange={(e) => { this.runCalculator(e) }} />
+        </div>
+
+        <div id='response' style={{ paddingTop: '20px' }}>
           {this.state.bmiMessage}
         </div>
       </>
