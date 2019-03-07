@@ -7,11 +7,9 @@ export const bmiCalculation = (weight, height, method) => {
   height = isNaN(height) ? 0 : height;
 
   if (method === "metric") {
-    debugger
     bmi = weight / (height / 100 * height / 100);
     console.log(bmi)
   } else if (method === "imperial") {
-    debugger
     bmi = (weight * 703)/(height * height);
   }
 

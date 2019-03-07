@@ -5,6 +5,7 @@ import LoginForm from './Components/LoginForm';
 import { authenticate } from './Modules/Auth';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
 import DisplayBmi from './Components/DisplayBmi';
+import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 
 class App extends Component {
   constructor(props) {
@@ -81,10 +82,16 @@ class App extends Component {
       if (this.state.renderLoginForm === true) {
         renderLogin = (
           <>
-            <LoginForm
-              loginHandler={this.onLogin.bind(this)}
-              inputChangeHandler={this.onChange.bind(this)}
-            />
+            <Container>
+              <Grid centered columns={5}>
+                <Grid.Column>
+                  <LoginForm
+                    loginHandler={this.onLogin.bind(this)}
+                    inputChangeHandler={this.onChange.bind(this)}
+                  />
+                </Grid.Column>
+              </Grid>
+            </Container>
           </>
         )
       } else {
@@ -111,8 +118,9 @@ class App extends Component {
             entrySaved={this.state.entrySaved}
             entryHandler={this.entryHandler.bind(this)}
           />
-            {renderLogin}
-            {performanceDataIndex}
+
+          {renderLogin}
+          {performanceDataIndex}
         </div>
         <div>
           <DisplayBmi />

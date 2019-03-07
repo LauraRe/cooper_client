@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { bmiCalculation } from '../Modules/BMICalculator';
+import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 
 class DisplayBmi extends Component {
   constructor(props) {
@@ -27,44 +28,52 @@ class DisplayBmi extends Component {
   render() {
     return (
       <>
-        <h1>BMI Converter</h1>
-        <select id="method" value={this.state.method} onChange={(e) => {
-          const method = e.target.value
-          let heightLabel
-          let weightLabel
+        <Container>
+          <Header as="h1" textAlign="center">
+            BMI Converter
+          </Header>
+          <Grid centered columns={5}>
+            <Grid.Column>
+              <select id="method" value={this.state.method} onChange={(e) => {
+                const method = e.target.value
+                let heightLabel
+                let weightLabel
 
-          if (method === "metric") {
-            weightLabel = "Weight(kg)"
-            heightLabel = "Height(cm)"
-          } else if (method === "imperial") {
-            weightLabel = "Weight(lbs)"
-            heightLabel = "Height(inches)"
-          }
+                if (method === "metric") {
+                  weightLabel = "Weight(kg)"
+                  heightLabel = "Height(cm)"
+                } else if (method === "imperial") {
+                  weightLabel = "Weight(lbs)"
+                  heightLabel = "Height(inches)"
+                }
 
-          this.setState({
-            method: e.target.value,
-            weightLabel: weightLabel,
-            heightLabel: heightLabel
-          })
-        }
-        }>
-          <option value="metric" > Metric </option>
-          <option value="imperial" > Imperial </option>
-        </select>
+                this.setState({
+                  method: e.target.value,
+                  weightLabel: weightLabel,
+                  heightLabel: heightLabel
+                })
+              }
+              }>
+                <option value="metric" > Metric </option>
+                <option value="imperial" > Imperial </option>
+              </select>
 
-        <div>
-          <label>{this.state.weightLabel}</label>
-          <input id="weight" name="weight" value={this.state.weight} onChange={(e) => { this.runCalculator(e) }} />
-        </div>
+              <div>
+                <label>{this.state.weightLabel}</label>
+                <input id="weight" name="weight" value={this.state.weight} onChange={(e) => { this.runCalculator(e) }} />
+              </div>
 
-        <div>
-          <label>{this.state.heightLabel}</label>
-          <input id="height" name="height" value={this.state.height} onChange={(e) => { this.runCalculator(e) }} />
-        </div>
+              <div>
+                <label>{this.state.heightLabel}</label>
+                <input id="height" name="height" value={this.state.height} onChange={(e) => { this.runCalculator(e) }} />
+              </div>
 
-        <div id='response' style={{ paddingTop: '20px' }}>
-          {this.state.bmiMessage}
-        </div>
+              <div id='response' style={{ paddingTop: '20px' }}>
+                {this.state.bmiMessage}
+              </div>
+            </Grid.Column>
+          </Grid>
+        </Container>
       </>
     )
   }

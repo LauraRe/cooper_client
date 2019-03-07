@@ -3,12 +3,13 @@ import { mount, shallow } from 'enzyme';
 import { stub } from 'sinon';
 import DisplayBmi from '../Components/DisplayBmi';
 import { bmiCalculation } from '../Modules/BMICalculator';
+import { Header } from 'semantic-ui-react';
 
 describe('<DisplayBmi />', () => {
   it('renders header', () => {
     const component = shallow(<DisplayBmi />);
-    const header = <h1>BMI Converter</h1>;
-    expect(component.contains(header)).toEqual(true);
+    const header = <Header>BMI Converter</Header>;
+    expect(component.containsMatchingElement(header)).toEqual(true);
   });
 
   it('shows metric as the standard method', () => {
