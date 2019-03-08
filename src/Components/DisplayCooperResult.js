@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CooperCalculator from '../Modules/CooperCalculator';
 import { saveData } from '../Modules/PerformanceData';
+import { Form, Container, Grid } from 'semantic-ui-react';
 
 class DisplayCooperResult extends Component {
 
@@ -46,9 +47,19 @@ class DisplayCooperResult extends Component {
       )
     }
     return (
-      <div>
-        {results}
-      </div>
+      <>
+        <Container>
+          <Grid centered columns={5}>
+            <Grid.Column>
+              <Form>
+                <Form.Field>
+                {results}
+                </Form.Field>
+              </Form>
+            </Grid.Column>
+          </Grid>
+        </Container>
+      </>
     )
   }
 }

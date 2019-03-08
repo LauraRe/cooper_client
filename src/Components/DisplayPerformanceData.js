@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { getData } from '../Modules/PerformanceData';
+import { Form, Container, Grid } from 'semantic-ui-react';
+
 
 class DisplayPerformanceData extends Component {
   constructor(props) {
@@ -14,12 +16,12 @@ class DisplayPerformanceData extends Component {
 
   async getPerformanceData() {
     let result = await getData();
-    this.setState({performanceData: result.data.entries}, () => {
+    this.setState({ performanceData: result.data.entries }, () => {
       this.props.indexUpdated();
     })
   }
 
-  render () {
+  render() {
     let dataIndex;
 
     if (this.props.updateIndex === true) {
@@ -36,11 +38,21 @@ class DisplayPerformanceData extends Component {
     }
 
     return (
-      <div>
-        {dataIndex}
-      </div>
+      <>
+        <Container>
+          <Grid centered columns={5}>
+            <Grid.Column>
+              <Form>
+                <Form.Field>
+                  {dataIndex}
+                </Form.Field>
+              </Form>
+            </Grid.Column>
+          </Grid>
+        </Container>
+      </>
     )
-  }      
+  }
 }
-  
+
 export default DisplayPerformanceData

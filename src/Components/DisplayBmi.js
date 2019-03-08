@@ -58,15 +58,16 @@ class DisplayBmi extends Component {
                 <option value="imperial" > Imperial </option>
               </select>
 
-              <div>
-                <label>{this.state.weightLabel}</label>
-                <input id="weight" name="weight" value={this.state.weight} onChange={(e) => { this.runCalculator(e) }} />
-              </div>
-
-              <div>
-                <label>{this.state.heightLabel}</label>
-                <input id="height" name="height" value={this.state.height} onChange={(e) => { this.runCalculator(e) }} />
-              </div>
+              <Form>
+                <Form.Field>
+                  <label>{this.state.weightLabel}</label>
+                  <input id="weight" name="weight" value={this.state.weight} onChange={(e) => { this.runCalculator(e) }} />
+                </Form.Field>
+                <Form.Field>
+                  <label>{this.state.heightLabel}</label>
+                  <input id="height" name="height" value={this.state.height} onChange={(e) => { this.runCalculator(e) }} />
+                </Form.Field>
+              </Form>
 
               <div id='response' style={{ paddingTop: '20px' }}>
                 {this.state.bmiMessage}

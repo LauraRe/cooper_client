@@ -15,4 +15,16 @@ describe('<DisplatCooperResult />', () => {
     const response = <p>Result: Average</p>
     expect(describedComponent.contains(response)).toEqual(true)
   })
+
+  it('evaluates the correct result for male/poor', () => {
+    const describedComponent = shallow(<DisplayCooperResult distance="1000" gender="male" age="23"/>);
+    const response = <p>Result: Poor</p>
+    expect(describedComponent.contains(response)).toEqual(true)
+  })
+
+  it('evaluates the correct result for male/average', () => {
+    const describedComponent = shallow(<DisplayCooperResult distance="2300" gender="male" age="23"/>);
+    const response = <p>Result: Average</p>
+    expect(describedComponent.contains(response)).toEqual(true)
+  })
 })

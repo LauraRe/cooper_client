@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const apiUrl = 'http://localhost:3000/api/v1';
 
-const authenticate = async (email, password) => {
+const authenticate = async (email, password ) => {
   const path = apiUrl + '/auth/sign_in';
   try {
     let response = await axios.post(path, { email: email, password: password })

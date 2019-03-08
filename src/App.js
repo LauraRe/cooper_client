@@ -57,24 +57,39 @@ class App extends Component {
     if (this.state.authenticated === true) {
       user = JSON.parse(sessionStorage.getItem('credentials')).uid;
       renderLogin = (
-        <p>Hi {user}</p>
-      )
-      performanceDataIndex = (
-        <button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</button>
+        <Container>
+          <Grid centered columns={5}>
+            <Grid.Column>
+              <p>Hi {user}</p>
+            </Grid.Column>
+          </Grid>
+        </Container>
       )
       if (this.state.renderIndex === true) {
         performanceDataIndex = (
           <>
-            <DisplayPerformanceData
-              updateIndex={this.state.updateIndex}
-              indexUpdated={this.indexUpdated.bind(this)}
-            />
-            <button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</button>
+            <Container>
+              <Grid centered columns={5}>
+                <Grid.Column>
+                  <DisplayPerformanceData
+                    updateIndex={this.state.updateIndex}
+                    indexUpdated={this.indexUpdated.bind(this)}
+                  />
+                  <button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</button>
+                </Grid.Column>
+              </Grid>
+            </Container>
           </>
         )
       } else {
         performanceDataIndex = (
-          <button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</button>
+          <Container>
+            <Grid centered columns={5}>
+              <Grid.Column>
+                <button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</button>
+              </Grid.Column>
+            </Grid>
+          </Container>
         )
       }
     } else {
@@ -97,34 +112,46 @@ class App extends Component {
       } else {
         renderLogin = (
           <>
-            <button id="login" onClick={() => this.setState({ renderLoginForm: true })}>Login</button>
-            <p>{this.state.message}</p>
+            <Container>
+              <Grid centered columns={5}>
+                <Grid.Column>
+                  <button id="login" onClick={() => this.setState({ renderLoginForm: true })}>Login</button>
+                  <p>{this.state.message}</p>
+                </Grid.Column>
+              </Grid>
+            </Container>
           </>
         )
       }
     }
     return (
       <>
-        <div>
-          <InputFields
-            inputChangeHandler={this.onChange.bind(this)}
-          />
+        <Container>
+          <Grid>
+            <Grid.Column>
+              <div>
+                <InputFields
+                  inputChangeHandler={this.onChange.bind(this)}
+                />
 
-          <DisplayCooperResult
-            distance={this.state.distance}
-            gender={this.state.gender}
-            age={this.state.age}
-            authenticated={this.state.authenticated}
-            entrySaved={this.state.entrySaved}
-            entryHandler={this.entryHandler.bind(this)}
-          />
+                <DisplayCooperResult
+                  distance={this.state.distance}
+                  gender={this.state.gender}
+                  age={this.state.age}
+                  authenticated={this.state.authenticated}
+                  entrySaved={this.state.entrySaved}
+                  entryHandler={this.entryHandler.bind(this)}
+                />
 
-          {renderLogin}
-          {performanceDataIndex}
-        </div>
-        <div>
-          <DisplayBmi />
-        </div>
+                {renderLogin}
+                {performanceDataIndex}
+              </div>
+              <div>
+                <DisplayBmi />
+              </div>
+            </Grid.Column>
+          </Grid>
+        </Container>
       </>
     );
   }
