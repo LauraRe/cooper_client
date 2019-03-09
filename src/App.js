@@ -5,7 +5,7 @@ import LoginForm from './Components/LoginForm';
 import { authenticate } from './Modules/Auth';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
 import DisplayBmi from './Components/DisplayBmi';
-import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { Container, Form, Grid, Header, Message, Segment, Button } from 'semantic-ui-react';
 
 class App extends Component {
   constructor(props) {
@@ -59,9 +59,9 @@ class App extends Component {
       renderLogin = (
         <Container>
           <Grid centered columns={5}>
-            <Grid.Column>
+            <Message positive>
               <p>Hi {user}</p>
-            </Grid.Column>
+            </Message>
           </Grid>
         </Container>
       )
@@ -75,7 +75,7 @@ class App extends Component {
                     updateIndex={this.state.updateIndex}
                     indexUpdated={this.indexUpdated.bind(this)}
                   />
-                  <button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</button>
+                  <Button primary onClick={() => this.setState({ renderIndex: false })}>Hide past entries</Button>
                 </Grid.Column>
               </Grid>
             </Container>
@@ -86,7 +86,7 @@ class App extends Component {
           <Container>
             <Grid centered columns={5}>
               <Grid.Column>
-                <button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</button>
+                <Button primary id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</Button>
               </Grid.Column>
             </Grid>
           </Container>
@@ -115,7 +115,12 @@ class App extends Component {
             <Container>
               <Grid centered columns={5}>
                 <Grid.Column>
-                  <button id="login" onClick={() => this.setState({ renderLoginForm: true })}>Login</button>
+                  <Button 
+                    primary
+                    id="login" 
+                    onClick={() => this.setState({ renderLoginForm: true })}>
+                    Login
+                  </Button>
                   <p>{this.state.message}</p>
                 </Grid.Column>
               </Grid>
@@ -130,6 +135,7 @@ class App extends Component {
           <Grid>
             <Grid.Column>
               <div>
+              {renderLogin}
                 <InputFields
                   inputChangeHandler={this.onChange.bind(this)}
                 />
@@ -142,8 +148,7 @@ class App extends Component {
                   entrySaved={this.state.entrySaved}
                   entryHandler={this.entryHandler.bind(this)}
                 />
-
-                {renderLogin}
+               
                 {performanceDataIndex}
               </div>
               <div>

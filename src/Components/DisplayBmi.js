@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { bmiCalculation } from '../Modules/BMICalculator';
-import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { Container, Form, Grid, Header, Message, Segment, Input } from 'semantic-ui-react';
 
 class DisplayBmi extends Component {
   constructor(props) {
@@ -60,12 +60,10 @@ class DisplayBmi extends Component {
 
               <Form>
                 <Form.Field>
-                  <label>{this.state.weightLabel}</label>
-                  <input id="weight" name="weight" value={this.state.weight} onChange={(e) => { this.runCalculator(e) }} />
+                  <Input placeholder="Weight" id="weight" name="weight" value={this.state.weight} onChange={(e) => { this.runCalculator(e) }} />
                 </Form.Field>
                 <Form.Field>
-                  <label>{this.state.heightLabel}</label>
-                  <input id="height" name="height" value={this.state.height} onChange={(e) => { this.runCalculator(e) }} />
+                  <Input placeholder="Height" id="height" name="height" value={this.state.height} onChange={(e) => { this.runCalculator(e) }} />
                 </Form.Field>
               </Form>
 

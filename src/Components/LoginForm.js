@@ -1,19 +1,19 @@
 import React from 'react';
-import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { Container, Form, Input, Header, Message, Button } from 'semantic-ui-react';
 
 const LoginForm = (props) => {
   return (
     <Container centered columns={5}>
       <Form>
         <Form.Field>
-          <label >Email</label>
-          <input id="email" onChange={props.inputChangeHandler}></input>
+          <Input placeholder="Email" id="email" onChange={props.inputChangeHandler} />
         </Form.Field>
         <Form.Field>
-          <label>Password</label>
-          <input id="password" onChange={props.inputChangeHandler}></input>
-          </Form.Field>
-          <button onClick={(e) => props.loginHandler(e)} id="submit">Submit</button>
+          <Input placeholder="Password" id="password" onChange={props.inputChangeHandler} />
+        </Form.Field>
+        <Button primary onClick={(e) => props.loginHandler(e)} id="submit">
+          Submit
+        </Button>
       </Form>
     </Container>
   )

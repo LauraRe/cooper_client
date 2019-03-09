@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, Grid, Header } from 'semantic-ui-react';
+import { Container, Form, Grid, Header, Input } from 'semantic-ui-react';
 
 const InputFields = (props) => {
   let gender_option = [{ text: "Female", value: "female"}, { text: "Male", value: "male"}]
@@ -19,12 +19,10 @@ const InputFields = (props) => {
 
             <Form>
               <Form.Field>
-                <label>Distance</label>
-                <input id="distance" onChange={props.inputChangeHandler}></input>
+                <Input placeholder="Distance" id="distance" onChange={props.inputChangeHandler} />
               </Form.Field>
               <Form.Field>
-                <label>Age</label>
-                <input id="age" onChange={props.inputChangeHandler}></input>
+                <Input placeholder="Age" id="age" onChange={props.inputChangeHandler} />
               </Form.Field>
             </Form>
           </Grid.Column>
