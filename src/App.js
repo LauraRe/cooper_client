@@ -64,11 +64,9 @@ class App extends Component {
       user = JSON.parse(sessionStorage.getItem('credentials')).uid;
       renderLogin = (
         <Container>
-          <Grid>
-            <Message positive>
+            <Message positive size='large'>
               <p>Hi {user}</p>
             </Message>
-          </Grid>
         </Container>
       )
       if (this.state.renderIndex === true) {
@@ -81,7 +79,7 @@ class App extends Component {
                     updateIndex={this.state.updateIndex}
                     indexUpdated={this.indexUpdated.bind(this)}
                   />
-                  <Button primary onClick={() => this.setState({ renderIndex: false })}>Hide past entries</Button>
+                  <Button primary style={{marginTop:'15px'}} onClick={() => this.setState({ renderIndex: false })}>Hide past entries</Button>
                 </Grid.Column>
               </Grid>
             </Container>

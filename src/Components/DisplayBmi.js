@@ -29,11 +29,11 @@ class DisplayBmi extends Component {
     return (
       <>
         <Container>
-          <Header as="h1" textAlign="center">
-            BMI Converter
-          </Header>
           <Grid>
             <Grid.Column>
+              <Header as="h1" textAlign="center" style={{marginTop:'20px', fontSize: '31px'}}>
+                BMI Converter
+              </Header>
               <select id="method" value={this.state.method} onChange={(e) => {
                 const method = e.target.value
                 let heightLabel

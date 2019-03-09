@@ -7,8 +7,8 @@ const InputFields = (props) => {
       <Container>
         <Grid>
           <Grid.Column>
-            <Header as="h1" textAlign="center">
-              Cooper test
+            <Header as="h1" textAlign="center" style={{marginTop:'20px', fontSize: '32px'}}>
+              Cooper Test
             </Header>
 
             <Dropdown

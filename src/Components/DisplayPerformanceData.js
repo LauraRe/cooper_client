@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getData } from '../Modules/PerformanceData';
-import { Form, Container, Grid } from 'semantic-ui-react';
+import { Line } from 'react-chartjs-2';
+import { Container, Grid } from 'semantic-ui-react';
 
 
 class DisplayPerformanceData extends Component {
@@ -28,12 +29,28 @@ class DisplayPerformanceData extends Component {
       this.getPerformanceData();
     }
     if (this.state.performanceData != null) {
+      const distances = []
+      const labels = []
+      this.state.performanceData.forEach(entry => {
+        distances.push(entry.data.distance)
+        labels.push(entry.data.message)
+      })
+
+      const data = {
+        datasets: [{
+          data: distances,
+          label: "My progress"
+        }],
+
+        labels: labels
+      };
       dataIndex = (
-        <div>
+        <>
           {this.state.performanceData.map(item => {
             return <div key={item.id}>{item.data.message}</div>
           })}
-        </div>
+          <Line ref='chart' data={data} />
+        </>
       )
     }
 
@@ -41,13 +58,7 @@ class DisplayPerformanceData extends Component {
       <>
         <Container>
           <Grid>
-            <Grid.Column>
-              <Form>
-                <Form.Field>
-                  {dataIndex}
-                </Form.Field>
-              </Form>
-            </Grid.Column>
+            {dataIndex}
           </Grid>
         </Container>
       </>
