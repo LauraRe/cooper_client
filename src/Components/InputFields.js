@@ -1,21 +1,23 @@
 import React from 'react';
-import { Container, Form, Grid, Header, Input } from 'semantic-ui-react';
+import { Container, Form, Grid, Header, Input, Dropdown } from 'semantic-ui-react';
 
 const InputFields = (props) => {
-  let gender_option = [{ text: "Female", value: "female"}, { text: "Male", value: "male"}]
   return (
     <>
       <Container>
-        <Grid centered columns={5}>
+        <Grid>
           <Grid.Column>
             <Header as="h1" textAlign="center">
               Cooper test
             </Header>
 
-            <select id="gender" onChange={props.inputChangeHandler}>
-              <option value="female">Female</option>
-              <option value="male">Male</option>
-            </select>
+            <Dropdown
+              defaultValue='female'
+              id="gender"
+              selection
+              onChange={(e, { value }) => props.inputGenderChangeHandler(value)}
+              options={[{ text: "Female", value: "female" }, { text: "Male", value: "male" }]}
+            />
 
             <Form>
               <Form.Field>

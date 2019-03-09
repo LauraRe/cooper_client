@@ -3,7 +3,7 @@ import { Container, Form, Input, Header, Message, Button } from 'semantic-ui-rea
 
 const LoginForm = (props) => {
   return (
-    <Container centered columns={5}>
+    <Container>
       <Form>
         <Form.Field>
           <Input placeholder="Email" id="email" onChange={props.inputChangeHandler} />

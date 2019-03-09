@@ -49,7 +49,7 @@ class DisplayCooperResult extends Component {
     return (
       <>
         <Container>
-          <Grid centered columns={5}>
+          <Grid>
             <Grid.Column>
               <Form>
                 <Form.Field>

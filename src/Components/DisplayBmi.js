@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { bmiCalculation } from '../Modules/BMICalculator';
-import { Container, Form, Grid, Header, Message, Segment, Input } from 'semantic-ui-react';
+import { Container, Form, Grid, Header, Input, Dropdown } from 'semantic-ui-react';
 
 class DisplayBmi extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class DisplayBmi extends Component {
           <Header as="h1" textAlign="center">
             BMI Converter
           </Header>
-          <Grid centered columns={5}>
+          <Grid>
             <Grid.Column>
               <select id="method" value={this.state.method} onChange={(e) => {
                 const method = e.target.value
@@ -60,10 +60,10 @@ class DisplayBmi extends Component {
 
               <Form>
                 <Form.Field>
-                  <Input placeholder="Weight" id="weight" name="weight" value={this.state.weight} onChange={(e) => { this.runCalculator(e) }} />
+                  <Input placeholder={this.state.weightLabel} id="weight" name="weight" value={this.state.weight} onChange={(e) => { this.runCalculator(e) }} />
                 </Form.Field>
                 <Form.Field>
-                  <Input placeholder="Height" id="height" name="height" value={this.state.height} onChange={(e) => { this.runCalculator(e) }} />
+                  <Input placeholder={this.state.heightLabel} id="height" name="height" value={this.state.height} onChange={(e) => { this.runCalculator(e) }} />
                 </Form.Field>
               </Form>
 

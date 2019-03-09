@@ -41,6 +41,12 @@ class App extends Component {
     })
   }
 
+  onGenderChange(value) {
+    this.setState({
+      gender: value
+    })
+  }
+
   entryHandler() {
     this.setState({ entrySaved: true, updateIndex: true });
   }
@@ -58,7 +64,7 @@ class App extends Component {
       user = JSON.parse(sessionStorage.getItem('credentials')).uid;
       renderLogin = (
         <Container>
-          <Grid centered columns={5}>
+          <Grid>
             <Message positive>
               <p>Hi {user}</p>
             </Message>
@@ -69,7 +75,7 @@ class App extends Component {
         performanceDataIndex = (
           <>
             <Container>
-              <Grid centered columns={5}>
+              <Grid>
                 <Grid.Column>
                   <DisplayPerformanceData
                     updateIndex={this.state.updateIndex}
@@ -84,7 +90,7 @@ class App extends Component {
       } else {
         performanceDataIndex = (
           <Container>
-            <Grid centered columns={5}>
+            <Grid>
               <Grid.Column>
                 <Button primary id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</Button>
               </Grid.Column>
@@ -98,7 +104,7 @@ class App extends Component {
         renderLogin = (
           <>
             <Container>
-              <Grid centered columns={5}>
+              <Grid>
                 <Grid.Column>
                   <LoginForm
                     loginHandler={this.onLogin.bind(this)}
@@ -113,7 +119,7 @@ class App extends Component {
         renderLogin = (
           <>
             <Container>
-              <Grid centered columns={5}>
+              <Grid>
                 <Grid.Column>
                   <Button 
                     primary
@@ -138,6 +144,7 @@ class App extends Component {
               {renderLogin}
                 <InputFields
                   inputChangeHandler={this.onChange.bind(this)}
+                  inputGenderChangeHandler={this.onGenderChange.bind(this)}
                 />
 
                 <DisplayCooperResult
