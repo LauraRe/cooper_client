@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { storeAuthCredentials } from './Auth'
 
-const apiUrl = 'https://ol-cooper-api.herokuapp.com/';
+const apiUrl = 'https://ol-cooper-api.herokuapp.com/api/v1';
 
 const saveData = (result) => {
   const headers = JSON.parse(sessionStorage.getItem(['credentials']));

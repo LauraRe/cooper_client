@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const apiUrl = 'https://ol-cooper-api.herokuapp.com/';
+const apiUrl = 'https://ol-cooper-api.herokuapp.com/api/v1';
 
 const authenticate = async (email, password ) => {
   const path = apiUrl + '/auth/sign_in';
