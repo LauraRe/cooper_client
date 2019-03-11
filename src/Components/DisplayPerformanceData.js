@@ -46,9 +46,6 @@ class DisplayPerformanceData extends Component {
       };
       dataIndex = (
         <>
-          {this.state.performanceData.map(item => {
-            return <div key={item.id}>{item.data.message}</div>
-          })}
           <Line ref='chart' data={data} />
         </>
       )
